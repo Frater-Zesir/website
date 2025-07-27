@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog | Frater-Zesir</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Blogul meu</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Articole recente</h2>
+      <ul>
+        <li>
+          <a href="#" onclick="loadMarkdown('posts/primul-articol.md')">Primul articol</a>
+          <span> - 27 iulie 2025</span>
+        </li>
+        <!-- Adaugă mai multe articole aici -->
+      </ul>
+    </section>
+    <article id="blog-content"></article>
+  </main>
+  <footer>
+    <p>&copy; 2025 Frater-Zesir</p>
+  </footer>
+  <script>
+    function loadMarkdown(url) {
+      fetch(url)
+        .then(response => response.text())
+        .then(text => {
+          document.getElementById('blog-content').innerHTML = marked.parse(text);
+        });
+    }
+  </script>
+</body>
+</html>
